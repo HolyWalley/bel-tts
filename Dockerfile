@@ -17,12 +17,6 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN pip install --upgrade pip && \
     pip install TTS
 
-COPY vocoder.pth .
-COPY model.pth .
-COPY vocoder_config.json .
-COPY config.json .
-COPY scale_stats.npy .
-
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 

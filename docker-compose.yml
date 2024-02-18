@@ -1,8 +1,23 @@
 version: "3.0"
 
 services:
+  model-downloader:
+    image: python:3.10.12  # Use an appropriate base image
+    volumes:
+      - model-data:/app/models
+      - ./download_models.sh:/app/download_models.sh
+    command: /app/download_models.sh
   bel-tts:
     build:
       context: .
     ports:
-      - "5001:5000"
+      - 5001:5000
+    depends_on:
+      - model-downloader
+    volumes:
+      - model-data:/app/models
+      - ./wait_for_models.sh:/app/wait_for_models.sh
+    entrypoint: ["/bin/bash", "/app/wait_for_models.sh"]
+    command: ["gunicorn", "-w", "1", "-b", "0.0.0.0:5000", "app:app"]
+volumes:
+  model-data:
