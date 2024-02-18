@@ -3,8 +3,7 @@ Simple dockerized flask http interface around [bel-tts](https://huggingface.co/j
 ## Build
 
 1. Clone repo
-2. To build copy required files from [bel-tts](https://huggingface.co/jhlfrfufyfn/bel-tts) to this directory
-3. docker compose build
+2. docker compose build
 
 ## Run
 
