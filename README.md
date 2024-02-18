@@ -12,7 +12,8 @@ Simple dockerized flask http interface around [bel-tts](https://huggingface.co/j
 3. curl it
 ```bash
 curl -X POST http://localhost:5001/synthesize \
-                               -F "text=ҁбаЦка" \
-                               --output output.wav
+     -H "Content-Type: application/json" \
+     -d '{"text":"ҁбаЦка"}' \
+     --output output.wav
 ```
 4. open output.wav

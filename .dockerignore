@@ -1,0 +1,4 @@
+*.wav
+*.rb
+.ruby-lsp
+.git

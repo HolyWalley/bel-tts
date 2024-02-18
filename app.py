@@ -18,7 +18,9 @@ app = Flask(__name__)
 
 @app.route('/synthesize', methods=['POST'])
 def synthesize():
-    text = request.form['text']
+    data = request.get_json()
+    text = data['text']
+
     # Synthesize the speech using the loaded model
     wavs = synthesizer.tts(text)
     out = io.BytesIO()
